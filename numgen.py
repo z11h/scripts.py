@@ -1,26 +1,22 @@
-# Written by Zakaria Ridouh with lots of help from Brian Kieffer!
+# Written by Zakaria Ridouh with help from Brian Kieffer!
 from random import randint
 from datetime import datetime
 
-def generate(low, high):
+
+def gen(low, high):
     list = {}
-    numbers = []
-
     while True:
-        randomInt = random.randint(int(low), int(high))
-        if list[randomInt] == undefined:
-            list[randomInt] = 1
-        elif list[randomInt] < 2:
-            list[randomInt]+=1
-        else:
-            continue
-        break
-
-    for key in list:
-        numbers.append(key)
-
-	# return the result
-    return numbers
+        randomInt = randint(int(low), int(high))
+        print randomInt
+        try:
+            if list[randomInt] < 3:
+                list[randomInt] += 1
+            else:  # when it equals 3
+                print "Done generating!\n"
+                print "The number that broke the loop is {0}".format(randomInt)
+                break
+        except:
+            list[randomInt] = 0
 
 print "Welcome to the Random Number Generator!"
 
@@ -29,8 +25,5 @@ high = raw_input('OK, Now please enter the ending (high) number: ')
 
 print "Starting to generate some Random numbers!"
 
-gen.generate(low, high)
-
-print "Done generating!\n"
-print "The number that stopped the loop is {}".format(1)
+gen(low, high)
 print "The current time is: " + str(datetime.now().time())
